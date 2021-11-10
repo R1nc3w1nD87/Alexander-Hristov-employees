@@ -26,8 +26,8 @@ public class Employees {
 
     private static int[] findMax(Map<Credentials, Integer> projectData) {
         int[] oldestPair = new int[2];
+        int highestValue = 0;
         for (Map.Entry<Credentials, Integer> entry : projectData.entrySet()) {
-            int highestValue = 0;
             Credentials currentKey = entry.getKey();
             int currentValue = entry.getValue();
             if (currentValue > highestValue){
