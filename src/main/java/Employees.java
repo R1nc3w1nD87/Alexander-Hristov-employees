@@ -9,7 +9,7 @@ public class Employees {
         List<int[]> inputRecords = new ArrayList<>();
 
         try {
-            FileInputStream inputStream = new FileInputStream("src/main/InputFile/Input.txt");
+            FileInputStream inputStream = new FileInputStream("src/main/resources/Input.txt");
             Scanner scan = new Scanner(inputStream);
             parseInputData(inputRecords, scan);
 
