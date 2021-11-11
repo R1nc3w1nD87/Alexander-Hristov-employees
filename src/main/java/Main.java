@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args) {
 
         List<Record> data = new ArrayList<>();
-        Tuple tuple = new Tuple();
         List<Pairs> pairedProjects = new ArrayList<>();
 
         parseInputData(data);
