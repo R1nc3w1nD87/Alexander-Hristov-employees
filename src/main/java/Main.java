@@ -25,8 +25,7 @@ public class Main {
             Tuple currentPair = projectDatum.getEmployeePair();
             int currentValue = projectDatum.getProjectLength();
             if (currentValue > highestValue) {
-                oldestPair.setFirstEmployeeId(currentPair.getFirstEmployeeId());
-                oldestPair.setSecondEmployeeId(currentPair.getSecondEmployeeId());
+                oldestPair = currentPair;
                 highestValue = currentValue;
             }
 
