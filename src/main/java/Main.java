@@ -14,20 +14,20 @@ public class Main {
         parseInputData(data);
         mapData(data, pairedProjects);
 
-        int[] oldestPair = findMax(pairedProjects);
+        Tuple oldestPair = findMax(pairedProjects);
 
-        System.out.println(Arrays.toString(oldestPair));
+        System.out.println(oldestPair.getFirstEmployeeId() + ", " + oldestPair.getSecondEmployeeId());
     }
 
-    private static int[] findMax(List<Pairs> projectData) {
-        int[] oldestPair = new int[2];
+    private static Tuple findMax(List<Pairs> projectData) {
+        Tuple oldestPair = new Tuple();
         int highestValue = 0;
         for (Pairs projectDatum : projectData) {
             Tuple currentPair = projectDatum.getEmployeePair();
             int currentValue = projectDatum.getProjectLength();
             if (currentValue > highestValue) {
-                oldestPair[0] = currentPair.getFirstEmployeeId();
-                oldestPair[1] = currentPair.getSecondEmployeeId();
+                oldestPair.setFirstEmployeeId(currentPair.getFirstEmployeeId());
+                oldestPair.setSecondEmployeeId(currentPair.getSecondEmployeeId());
                 highestValue = currentValue;
             }
 
