@@ -12,7 +12,7 @@ public class Main {
         List<Pairs> pairedProjects = new ArrayList<>();
 
         parseInputData(data);
-        mapData(data, tuple, pairedProjects);
+        mapData(data, pairedProjects);
 
         int[] oldestPair = findMax(pairedProjects);
 
@@ -35,7 +35,7 @@ public class Main {
         return oldestPair;
     }
 
-    private static void mapData(List<Record> data, Tuple tuple, List<Pairs> pairs) {
+    private static void mapData(List<Record> data, List<Pairs> pairs) {
         for (int i = 0; i < data.size(); i++) {
             int currentEmployee = data.get(i).getEmployeeId();
             int currentProject = data.get(i).getProjectId();
@@ -45,8 +45,7 @@ public class Main {
                 Pairs pair = new Pairs();
                 if (datum.getEmployeeId() != currentEmployee
                         && datum.getProjectId() == currentProject) {
-                    tuple.setFirstEmployeeId(currentEmployee);
-                    tuple.setSecondEmployeeId(datum.getEmployeeId());
+                    Tuple tuple = new Tuple(currentEmployee, datum.getEmployeeId());
                     int currentLongestSum = currentDateSum + datum.getDateTo().compareTo(datum.getDateFrom());
                     pair.setEmployeePair(tuple);
                     pair.setProjectLength(currentLongestSum);
