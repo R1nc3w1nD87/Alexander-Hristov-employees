@@ -1,7 +1,7 @@
-import r1nc3w1nd.data.Record;
-import r1nc3w1nd.data.Tuple;
-import r1nc3w1nd.util.DataMapper;
-import r1nc3w1nd.util.InputParser;
+import employees.data.Record;
+import employees.data.Tuple;
+import employees.util.DataMapper;
+import employees.util.InputParser;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,20 +12,27 @@ public class Main {
 
         FileInputStream input = new FileInputStream("src/main/resources/Input.txt");
 
-        InputParser parser = new InputParser(input);
+        InputParser parser = new InputParser();
 
-        List<Record> data = parser.parseInput();
+        List<Record> data = parser.parseInput(input);
 
-        DataMapper mapper = new DataMapper(data);
+        DataMapper mapper = new DataMapper();
 
-        Map<Tuple, Long> mappedData = mapper.mapData();
+        Map<Tuple, Long> mappedData = mapper.mapData(data);
 
+        Tuple result = findMax(mappedData);
 
-        printResult(mappedData);
+        printResult(result);
+
 
     }
 
-    private static void printResult(Map<Tuple, Long> mappedData) {
+    private static void printResult(Tuple result) {
+        System.out.println("The ID's of the two employees with the longest running collaboration on projects are "
+                        + result.getFirstId() + " and " + result.getSecondId());
+    }
+
+    private static Tuple findMax(Map<Tuple, Long> mappedData) {
         Map.Entry<Tuple, Long> maxEntry = null;
 
         for (Map.Entry<Tuple, Long> entry : mappedData.entrySet()) {
@@ -34,8 +41,9 @@ public class Main {
             }
         }
         assert maxEntry != null;
-        Tuple result = maxEntry.getKey();
-        System.out.println("The ID's of the two employees who have worked together on different projects the longest are " + result.getFirstId() + " and " + result.getSecondId());
+
+        return maxEntry.getKey();
+
     }
 
 }

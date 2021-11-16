@@ -1,7 +1,9 @@
-package r1nc3w1nd.util;
+package employees.util;
 
-import r1nc3w1nd.data.Record;
+import employees.data.Record;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +11,11 @@ import java.util.Scanner;
 
 public class InputParser {
 
-    FileInputStream input;
-    List<Record> data = new ArrayList<>();
+    public InputParser() {}
 
-    public InputParser(FileInputStream input) {
-        this.input = input;
-    }
+    public List<Record> parseInput(FileInputStream input) {
 
-    public List<Record> parseInput() {
-
+        List<Record> data = new ArrayList<>();
         Scanner scan = new Scanner(input);
 
         while (scan.hasNext()) {
@@ -32,5 +30,9 @@ public class InputParser {
             data.add(record);
         }
         return data;
+    }
+
+    public List<Record> parseInput(String src) throws IOException {
+        return parseInput(new FileInputStream(src));
     }
 }

@@ -1,22 +1,16 @@
-package r1nc3w1nd.util;
+package employees.util;
 
 
-import r1nc3w1nd.data.Record;
-import r1nc3w1nd.data.Tuple;
+import employees.data.Record;
+import employees.data.Tuple;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DataMapper {
 
-    List<Record> data;
-    Map<Tuple, Long> collaborationData = new HashMap<>();
-
-    public DataMapper(List<Record> data){
-        this.data = data;
-    }
-
-    public Map<Tuple, Long> mapData(){
+    public Map<Tuple, Long> mapData(List<Record> data){
+        Map<Tuple, Long> collaborationData = new HashMap<>();
         for (int i = 0; i < data.size(); i++) {
             int currentEmployeeId = data.get(i).getEmployeeId();
             int currentProjectId = data.get(i).getProjectId();
