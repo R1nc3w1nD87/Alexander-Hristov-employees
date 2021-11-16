@@ -1,4 +1,7 @@
+package r1nc3w1nd.data;
+
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Record {
     private int employeeId;
@@ -6,14 +9,17 @@ public class Record {
     private LocalDate dateFrom;
     private LocalDate dateTo;
 
-    public Record(){}
-
     public Record(int employeeId, int projectId, LocalDate dateFrom, LocalDate dateTo) {
         this.employeeId = employeeId;
         this.projectId = projectId;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
     }
+
+    public long daysOnProject(){
+        return ChronoUnit.DAYS.between(dateFrom, dateTo);
+    }
+
 
     public int getEmployeeId() {
         return employeeId;
