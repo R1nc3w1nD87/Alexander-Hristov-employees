@@ -2,7 +2,6 @@ import employees.data.Record;
 import employees.data.Tuple;
 import employees.util.DataMapper;
 import employees.util.InputParser;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
@@ -23,8 +22,6 @@ public class Main {
         Tuple result = findMax(mappedData);
 
         printResult(result);
-
-
     }
 
     private static void printResult(Tuple result) {

@@ -16,7 +16,7 @@ public class Record {
         this.dateTo = dateTo;
     }
 
-    public long daysOnProject(){
+    public long daysOnProject() {
         return ChronoUnit.DAYS.between(dateFrom, dateTo);
     }
 
@@ -27,5 +27,4 @@ public class Record {
     public int getProjectId() {
         return projectId;
     }
-
 }
